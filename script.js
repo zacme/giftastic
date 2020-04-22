@@ -1,16 +1,11 @@
-//global variables
 
-//var searchistory
-// if(localStorage.getItem('giphy')){
-//     searchistory = JSON.parse(...)
-// }else{
-//     searchistory = []
-// }
 
+//starting searches
 var searchistory = localStorage.getItem('giphy') ? 
 JSON.parse(localStorage.getItem('giphy')) : 
 ['puppy', 'kitty', 'baby', 'funny', 'cartoon']
 
+//related to btnDiv on html
 appendbutton();
 function appendbutton (){
     $("#btnDiv").empty()
@@ -19,8 +14,9 @@ for (var i = 0; i<searchistory.length ;i++){
 }
 };
 
+//how to search
 $("#submit").on('click',function(){
-    //search for the giph of the text in search
+    //search for the giphy of the text in search
     var searchterm = $("#searchterm").val().trim();
     console.log(searchterm);
     if(!searchistory.indexOf(searchterm)){
@@ -31,6 +27,8 @@ $("#submit").on('click',function(){
     rungiphy(searchterm)
 })
 
+
+//showing giphys using api key
 function rungiphy (term) {
 var queryURL = `https://api.giphy.com/v1/gifs/search?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&q=${term}`;
 $.ajax({
